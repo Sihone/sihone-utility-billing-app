@@ -1,0 +1,37 @@
+# Top-level ignores
+.DS_Store
+.env
+*.log
+
+# Server
+/server/node_modules/
+server/.env
+server/logs/
+server/tmp/
+server/.cache/
+
+# Client
+/client/node_modules/
+client/.env
+client/.next/
+client/build/
+client/dist/
+
+# OS / Editor junk
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.local
+*.env.*
+.idea/
+.vscode/
+Thumbs.db
+
+# Docker / Deployment (if any)
+.dockerignore
+docker-compose.override.yml
+
+# Optional: coverage & test outputs
+coverage/
