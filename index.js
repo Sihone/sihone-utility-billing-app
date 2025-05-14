@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const Apartment = require('./models/Apartment');
-const sequelize = require('./models');
-require('./models/associations');
+const Apartment = require('./server/models/Apartment');
+const sequelize = require('./server/models');
+require('./server/models/associations');
 
 const app = express();
 app.use(cors());
@@ -11,16 +11,16 @@ app.use(express.json());
 
 sequelize.sync().then(() => console.log('MySQL synced'));
 
-const apartmentRoutes = require('./routes/apartmentRoutes');
+const apartmentRoutes = require('./server/routes/apartmentRoutes');
 app.use('/api/apartments', apartmentRoutes);
 
-const meterReadingRoutes = require('./routes/meterReadingRoutes');
+const meterReadingRoutes = require('./server/routes/meterReadingRoutes');
 app.use('/api/readings', meterReadingRoutes);
 
-const invoiceRoutes = require('./routes/invoiceRoutes');
+const invoiceRoutes = require('./server/routes/invoiceRoutes');
 app.use('/api/invoices', invoiceRoutes);
 
-const settingsRoutes = require('./routes/settingsRoutes');
+const settingsRoutes = require('./server/routes/settingsRoutes');
 app.use('/api/settings', settingsRoutes);
 
 const PORT = process.env.PORT || 8000;

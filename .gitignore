@@ -4,8 +4,7 @@
 *.log
 
 # Server
-/server/node_modules/
-server/.env
+/node_modules/
 server/logs/
 server/tmp/
 server/.cache/
