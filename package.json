@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "client": "cd web && npm start",
+    "client": "cd client && npm start",
     "server": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
-    "dev:server": "cd web && npm build && cd .. && npm start",
+    "dev:server": "cd client && npm build && cd .. && npm start",
     "start": "node index.js",
-    "build": "cd web && npm install --legacy-peer-deps && npm run build"
+    "build": "cd client && npm install --legacy-peer-deps && npm run build"
   },
   "keywords": [],
   "author": "",
