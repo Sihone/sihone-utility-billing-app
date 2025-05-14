@@ -1,0 +1,30 @@
+name: sihobe-utility-billing-app
+services:
+  - name: server
+    run_command: npm start
+    source_dir: server
+    build_command: npm install
+    environment_slug: node-js
+    envs:
+      - key: PORT
+        value: 8000
+      - key: DB_HOST
+        value: 193.203.166.22
+      - key: DB_USER
+        value: u209577136_utility_manage
+      - key: DB_PASS
+        value: vTg9v?|X7v/
+      - key: DB_NAME
+        value: u209577136_utility_manage
+    http_port: 8000
+    routes:
+      - path: /api
+
+  - name: client
+    run_command: npm run start
+    source_dir: client
+    build_command: npm install && npm run build
+    environment_slug: node-js
+    output_dir: build
+    routes:
+      - path: /
