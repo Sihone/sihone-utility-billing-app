@@ -10,11 +10,11 @@ server/tmp/
 server/.cache/
 
 # Client
-/client/node_modules/
-client/.env
-client/.next/
-client/build/
-client/dist/
+/web/node_modules/
+web/.env
+web/.next/
+web/build/
+web/dist/
 
 # OS / Editor junk
 *.swp
