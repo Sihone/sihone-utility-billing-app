@@ -6,10 +6,6 @@ const sequelize = require('./server/models');
 require('./server/models/associations');
 
 const app = express();
-app.use((req, res, next) => {
-  console.log('INCOMING REQUEST:', req.method, req.originalUrl);
-  next();
-});
 app.use(cors());
 app.use(express.json());
 
@@ -35,9 +31,14 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend last
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+try {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  });
+} catch (err) {
+  console.error('Error handling route:', req.path, err.message);
+  res.status(500).send('Unexpected server error');
+}
 
 // Start server
 const PORT = process.env.PORT || 5001;
