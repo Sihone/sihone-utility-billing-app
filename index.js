@@ -31,14 +31,15 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend last
 app.use(express.static(path.join(__dirname, 'client/build')));
-try {
-  app.get('*', (req, res) => {
+app.get('*', (req, res) => {
+  try {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
-  });
-} catch (err) {
-  console.error('Error handling route:', req.path, err.message);
-  res.status(500).send('Unexpected server error');
-}
+  } catch (err) {
+    console.error('Error serving React app at:', req.path);
+    console.error(err);
+    res.status(500).send('Unexpected error');
+  }
+});
 
 // Start server
 const PORT = process.env.PORT || 5001;
