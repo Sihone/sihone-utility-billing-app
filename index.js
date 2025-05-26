@@ -31,14 +31,8 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend last
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
-  } catch (err) {
-    console.error('Error serving React app at:', req.path);
-    console.error(err);
-    res.status(500).send('Unexpected error');
-  }
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // Start server
